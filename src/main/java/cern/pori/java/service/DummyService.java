@@ -1,6 +1,5 @@
 package cern.pori.java.service;
 
-import cern.pori.java.repository.DummyRepository;
 import cern.pori.java.repository.Repository;
 
 public class DummyService {
