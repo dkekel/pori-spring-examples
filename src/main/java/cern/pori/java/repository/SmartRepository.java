@@ -1,9 +1,9 @@
 package cern.pori.java.repository;
 
-public class DummyRepository implements Repository {
+public class SmartRepository implements Repository {
 
   @Override
   public String getHello() {
-    return "Hello World!";
+    return "Hello Pori!";
   }
 }
