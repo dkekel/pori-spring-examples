@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Hello Students</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1 th:text="${message}">Default Title</h1>
+
+<h2>Topics to Learn:</h2>
+<ul>
+  <li th:each="item : ${items}" th:text="${item}">Item</li>
+</ul>
+
+<p>Today's date: <span th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}">01-01-2023</span></p>
+</body>
+</html>
