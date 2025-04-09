@@ -1,6 +1,6 @@
 package cern.pori.spring.controller;
 
-import cern.pori.spring.model.DummyEntity;
+import cern.pori.spring.model.SpringCampusEntity;
 import cern.pori.spring.service.SpringCampusService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +31,8 @@ public class MyFirstController {
   }
 
   @GetMapping(path = "/api/hello", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<DummyEntity> helloRest() {
-    DummyEntity helloEntity = springCampusService.getHelloEntity();
+  public ResponseEntity<SpringCampusEntity> helloRest() {
+    var helloEntity = springCampusService.createSpringCampusEntity();
     return ResponseEntity.ok(helloEntity);
   }
 }
