@@ -16,11 +16,15 @@ public class MyFirstController {
 
   @GetMapping("/hello")
   public String hello(Model model) {
-    var hello = springCampusService.getHelloEntity();
-    model.addAttribute("message", hello.getMessage());
+    var hello = springCampusService.createSpringCampusEntity();
+    model.addAttribute("name", hello.getName());
     model.addAttribute("items", hello.getItems());
-    // Will look for templates/hello.html
-    return "hello";
+    model.addAttribute("description", hello.getDescription());
+    model.addAttribute("city", hello.getCity());
+    model.addAttribute("yearOpened", hello.getYearOpened());
+    model.addAttribute("address", hello.getAddress());
+    // Will look for templates/smart-hello.html
+    return "smart-hello";
   }
 
 }
