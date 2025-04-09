@@ -1,12 +1,13 @@
 package cern.pori.spring.repository;
 
+import java.time.LocalDate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class SmartSpringRepository implements SpringRepository {
+public class DummySpringCampusRepository implements SpringCampusRepository {
 
   @Override
   public String getHello() {
-    return "Hello PORI!";
+    return "Hello World!";
   }
 }
