@@ -1,5 +1,6 @@
 package cern.pori.spring.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -7,6 +8,7 @@ public class SpringCampusEntity {
 
   private String name;
   private String city;
+  @JsonFormat(pattern = "yyyy-MM-dd")
   private LocalDate yearOpened;
   private String description;
   private String address;
