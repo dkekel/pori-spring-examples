@@ -1,0 +1,39 @@
+### Login as Admin
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### Login as Regular User
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user123"
+}
+
+### Example of protected resource access (using the JWT token)
+GET http://localhost:8080/api/protected/resource
+Authorization: Bearer {{auth_token}}
+
+### Using environment variables to store tokens
+# @name loginAdmin
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+> {%
+  client.global.set("admin_token", response.body.token);
+%}
+
+### Using the saved admin token
+GET http://localhost:8080/api/protected/resource
+Authorization: Bearer {{admin_token}}
