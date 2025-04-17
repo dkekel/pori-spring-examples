@@ -21,22 +21,12 @@ GET http://localhost:8080/api/public/hello
 
 ### Example of protected resource access (using the JWT token)
 GET http://localhost:8080/api/secure/hello
-Authorization: Bearer {{auth_token}}
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImlhdCI6MTc0NDg4MzczMCwiZXhwIjoxNzQ0OTcwMTMwfQ.-GEvudnxC2RNWNiOZbF9IxyaeKv68Uakc4zJrQrlPG6FbrheUpJ_0WXDAuRrLhg7uPVPIPx6rzru26tAsBwdlg
 
-### Using environment variables to store tokens
-# @name loginAdmin
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
+### Example of protected admin resource access (using the JWT token)
+GET http://localhost:8080/api/secure/admin/hello
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiaWF0IjoxNzQ0ODgzNzU2LCJleHAiOjE3NDQ5NzAxNTZ9.ZuENyUZyU9TDO2-Hd-p62TrHACcV9S3WI9zGgtDjKHgEAEADYn_l-5TOBkBIuZU6qUsXXpX4hLJIZeAg9pcWOw
 
-{
-  "username": "admin",
-  "password": "admin123"
-}
-
-> {%
-  client.global.set("admin_token", response.body.token);
-%}
-
-### Using the saved admin token
-GET http://localhost:8080/api/secure/hello
-Authorization: Bearer {{admin_token}}
+### Example of user resource access (using the JWT token)
+GET http://localhost:8080/api/secure/user/hello
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiaWF0IjoxNzQ0ODgzNzU2LCJleHAiOjE3NDQ5NzAxNTZ9.ZuENyUZyU9TDO2-Hd-p62TrHACcV9S3WI9zGgtDjKHgEAEADYn_l-5TOBkBIuZU6qUsXXpX4hLJIZeAg9pcWOw
