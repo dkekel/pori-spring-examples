@@ -1,10 +1,12 @@
 package cern.pori.spring.configuration;
 
+import jakarta.servlet.FilterRegistration;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletRegistration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
 public class WebAppInitializer implements WebApplicationInitializer {
@@ -28,5 +30,11 @@ public class WebAppInitializer implements WebApplicationInitializer {
         servlet);
     registration.setLoadOnStartup(1);
     registration.addMapping("/");
+
+    // Register Spring Security Filter
+    FilterRegistration.Dynamic securityFilter = servletContext.addFilter(
+        "springSecurityFilterChain", new DelegatingFilterProxy("springSecurityFilterChain"));
+    securityFilter.addMappingForUrlPatterns(null, false, "/*");
+
   }
 }
