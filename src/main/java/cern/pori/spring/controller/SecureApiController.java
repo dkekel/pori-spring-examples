@@ -23,4 +23,20 @@ public class SecureApiController {
     var helloEntity = springCampusService.createSpringCampusEntity();
     return ResponseEntity.ok(helloEntity);
   }
+
+  @GetMapping(path = "/user/hello", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<SpringCampusEntity> userHelloRest() {
+    var userEntity = springCampusService.createSpringCampusEntity();
+    userEntity.setName(userEntity.getName() + " (User section)");
+    return ResponseEntity.ok(userEntity);
+  }
+
+  @GetMapping(path = "/admin/hello", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<SpringCampusEntity> adminHelloRest() {
+    var adminEntity = springCampusService.createSpringCampusEntity();
+    adminEntity.setName(adminEntity.getName() + " (Admin section)");
+    return ResponseEntity.ok(adminEntity);
+  }
+  
+  
 }
