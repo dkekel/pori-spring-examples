@@ -16,8 +16,11 @@ Content-Type: application/json
   "password": "user123"
 }
 
+### Example of unprotected resource access
+GET http://localhost:8080/api/public/hello
+
 ### Example of protected resource access (using the JWT token)
-GET http://localhost:8080/api/protected/resource
+GET http://localhost:8080/api/secure/hello
 Authorization: Bearer {{auth_token}}
 
 ### Using environment variables to store tokens
@@ -35,5 +38,5 @@ Content-Type: application/json
 %}
 
 ### Using the saved admin token
-GET http://localhost:8080/api/protected/resource
+GET http://localhost:8080/api/secure/hello
 Authorization: Bearer {{admin_token}}
