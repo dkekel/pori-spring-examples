@@ -29,4 +29,8 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX
 
 ### Example of user resource access (using the JWT token)
 GET http://localhost:8080/api/secure/user/hello
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiaWF0IjoxNzQ0ODgzNzU2LCJleHAiOjE3NDQ5NzAxNTZ9.ZuENyUZyU9TDO2-Hd-p62TrHACcV9S3WI9zGgtDjKHgEAEADYn_l-5TOBkBIuZU6qUsXXpX4hLJIZeAg9pcWOw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiaWF0IjoxNzQ1MzE1OTM3LCJleHAiOjE3NDU0MDIzMzd9.p-BO-LP9PaIwxtKygeMsYbWO8I8s6HSNlCSImwrz_REzKNS1vxbBXwuPIj_b7iJ5bZETs6nZvLPjHw-tMiKl_w
+
+### Example of protected admin resource access (using the JWT token)
+GET http://localhost:8080/api/secure/campus/year/2015
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiaWF0IjoxNzQ1MzE2MjI3LCJleHAiOjE3NDU0MDI2Mjd9.1VKDn6GdD5zTKgZYPTVLiGgfXsM8ou_vxFMiE_VD_oiU-1twTVfWob-Nek3Ff6Qeu71zLCQU9uOIg8ke2KMGMw

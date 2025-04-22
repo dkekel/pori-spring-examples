@@ -5,8 +5,6 @@ import java.util.List;
 
 public interface SpringCampusRepository {
 
-  String getHello();
-
   String getName();
 
   String getCity();
