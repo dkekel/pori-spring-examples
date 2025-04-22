@@ -19,15 +19,9 @@ public class SecureApiController {
     this.springCampusService = springCampusService;
   }
 
-  @GetMapping(path = "/hello", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<SpringCampusEntity> secureHelloRest() {
-    var helloEntity = springCampusService.createSpringCampusEntity();
-    return ResponseEntity.ok(helloEntity);
-  }
-
   @GetMapping(path = "/user/hello", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<SpringCampusEntity> userHelloRest() {
-    var userEntity = springCampusService.createSpringCampusEntity();
+    var userEntity = springCampusService.getAllEntities().getFirst();
     userEntity.setName(userEntity.getName() + " (User section)");
     return ResponseEntity.ok(userEntity);
   }

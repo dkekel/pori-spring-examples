@@ -34,3 +34,31 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX
 ### Example of protected admin resource access (using the JWT token)
 GET http://localhost:8080/api/secure/campus/year/2015
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiaWF0IjoxNzQ1MzE2MjI3LCJleHAiOjE3NDU0MDI2Mjd9.1VKDn6GdD5zTKgZYPTVLiGgfXsM8ou_vxFMiE_VD_oiU-1twTVfWob-Nek3Ff6Qeu71zLCQU9uOIg8ke2KMGMw
+
+### Example of retrieving stored data
+GET http://localhost:8080/api/campus
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiaWF0IjoxNzQ1NDE0MjMxLCJleHAiOjE3NDU1MDA2MzF9.dx9D2D-fbdO10hxTgjafybp-5DmdSrSyNFClKIwvkByba1pC6yo3tRzkX24QkgFCPqSrdC72g693t-IN1g74aQ
+
+### Example of updating stored data
+PUT http://localhost:8080/api/campus/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiaWF0IjoxNzQ1NDE0MjMxLCJleHAiOjE3NDU1MDA2MzF9.dx9D2D-fbdO10hxTgjafybp-5DmdSrSyNFClKIwvkByba1pC6yo3tRzkX24QkgFCPqSrdC72g693t-IN1g74aQ
+Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "Spring campus Pori 2030",
+    "city": "28130 Pori, Finland",
+    "yearOpened": "2030-05-05",
+    "description": "The 2030 cern spring campus is the ninth edition of a series of schools dedicated to information technology and computing. This year, the school will take place in Pori Satakunta university of applied sciences between the 05th and the 09th of may 2030.",
+    "address": "Satakunnankatu 23",
+    "items": [
+      "Spring",
+      "Spring MVC",
+      "Spring Data",
+      "Spring Boot"
+    ]
+  }
+
+### Example of deleting stored data
+DELETE http://localhost:8080/api/campus/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOIiwiaWF0IjoxNzQ1NDE0MjMxLCJleHAiOjE3NDU1MDA2MzF9.dx9D2D-fbdO10hxTgjafybp-5DmdSrSyNFClKIwvkByba1pC6yo3tRzkX24QkgFCPqSrdC72g693t-IN1g74aQ

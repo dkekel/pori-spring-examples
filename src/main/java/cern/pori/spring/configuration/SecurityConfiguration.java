@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.FrameOptionsConfig;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -16,6 +17,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfiguration {
+
+  private static final String ADMIN_ROLE = "ADMIN";
 
   private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
   private final JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -30,6 +33,8 @@ public class SecurityConfiguration {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
+        .headers(headers ->
+            headers.frameOptions(FrameOptionsConfig::sameOrigin))
         .csrf(AbstractHttpConfigurer::disable)
         .exceptionHandling(exception ->
             exception.authenticationEntryPoint(jwtAuthenticationEntryPoint))
@@ -39,8 +44,9 @@ public class SecurityConfiguration {
             auth
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/public/**").permitAll()
-                .requestMatchers("/api/secure/admin/**").hasRole("ADMIN")
-                .requestMatchers("/api/secure/user/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers("/h2-console/**").permitAll()
+                .requestMatchers("/api/secure/admin/**").hasRole(ADMIN_ROLE)
+                .requestMatchers("/api/secure/user/**").hasAnyRole("USER", ADMIN_ROLE)
                 .anyRequest().authenticated());
 
     http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

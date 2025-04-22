@@ -1,5 +1,6 @@
 package cern.pori.spring.exception;
 
+import java.util.NoSuchElementException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -15,4 +16,8 @@ public class SpringCampusExceptionHandler {
         HttpStatus.I_AM_A_TEAPOT);
   }
 
+  @ExceptionHandler(NoSuchElementException.class)
+  public ResponseEntity<String> handleException(NoSuchElementException ex) {
+    return new ResponseEntity<>(ex.getMessage(), HttpStatus.NO_CONTENT);
+  }
 }
