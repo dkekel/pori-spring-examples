@@ -1,18 +1,45 @@
 package cern.pori.spring.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "SPRING_CAMPUS")
 public class SpringCampusEntity {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
   private String name;
   private String city;
   @JsonFormat(pattern = "yyyy-MM-dd")
+  @Column(name = "YEAR_OPENED")
   private LocalDate yearOpened;
+
+  @Column(length = 1000)
   private String description;
   private String address;
-  private List<String> items;
+
+  @ElementCollection(fetch = FetchType.EAGER)
+  @CollectionTable(
+      name = "SPRING_CAMPUS_ITEMS",
+      joinColumns = @JoinColumn(name = "SPRING_CAMPUS_ID")
+  )
+  @Column(name = "ITEMS")
+  private List<String> items = new ArrayList<>();
 
   public String getName() {
     return name;
@@ -60,5 +87,13 @@ public class SpringCampusEntity {
 
   public void setItems(List<String> items) {
     this.items = items;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
   }
 }
