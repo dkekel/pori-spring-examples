@@ -7,11 +7,6 @@ import org.springframework.stereotype.Repository;
 public class SmartSpringCampusRepository implements SpringCampusRepository {
 
   @Override
-  public String getHello() {
-    return "Hello PORI!";
-  }
-
-  @Override
   public String getName() {
     return "Spring Campus Pori 2025";
   }
