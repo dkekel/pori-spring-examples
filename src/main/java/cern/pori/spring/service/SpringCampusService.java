@@ -3,6 +3,7 @@ package cern.pori.spring.service;
 import cern.pori.spring.model.SpringCampusEntity;
 import cern.pori.spring.repository.SpringCampusJpaRepository;
 import cern.pori.spring.repository.SpringCampusRepository;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -64,7 +65,13 @@ public class SpringCampusService {
   @PreAuthorize("hasRole('ADMIN')")
   @Transactional
   public SpringCampusEntity saveEntity(SpringCampusEntity entity) {
-    return jpaRepository.save(entity);
+    try {
+      var result = jpaRepository.save(entity);
+      Thread.sleep(Duration.ofSeconds(30));
+      return result;
+    } catch (InterruptedException ex) {
+      throw new RuntimeException(ex);
+    }
   }
 
   // Read
