@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class SpringCampusService {
 
   private final SpringCampusRepository legacyRepository;
@@ -63,21 +62,25 @@ public class SpringCampusService {
   // Create
   // Update
   @PreAuthorize("hasRole('ADMIN')")
+  @Transactional
   public SpringCampusEntity saveEntity(SpringCampusEntity entity) {
     return jpaRepository.save(entity);
   }
 
   // Read
+  @Transactional(readOnly = true)
   public List<SpringCampusEntity> getAllEntities() {
     return jpaRepository.findAll();
   }
 
+  @Transactional(readOnly = true)
   public Optional<SpringCampusEntity> getEntityById(Long id) {
     return jpaRepository.findById(id);
   }
 
   // Delete
   @PreAuthorize("hasRole('ADMIN')")
+  @Transactional(readOnly = true)
   public void deleteEntity(Long id) {
     jpaRepository.deleteById(id);
   }
