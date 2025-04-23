@@ -13,6 +13,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * Security configuration for the Spring Boot application.
+ * Configures JWT-based authentication and URL-based authorization rules.
+ * Also allows access to the H2 console.
+ */
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
